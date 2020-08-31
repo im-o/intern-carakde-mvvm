@@ -1,18 +1,20 @@
 package com.example.mvvmsampleappintern.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.databinding.ActivityLoginBinding
 import com.example.mvvmsampleappintern.utils.myToast
 
 class LoginActivity : AppCompatActivity(), AuthListener {
-
+    private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         val viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
         binding.viewmodel = viewModel
         viewModel.authListener = this
@@ -22,11 +24,15 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         myToast("Login Started")
     }
 
-    override fun onSuccess() {
-        myToast("Login Success")
+    override fun onSuccess(loginResponse: LiveData<String>) {
+        loginResponse.observe(this, Observer {
+            val responseResult = "${getString(R.string.response_result)} $it"
+            binding.tvResponse.text = responseResult
+        })
     }
 
     override fun onFailure(msg: String) {
-        myToast("Login Failure -> $msg")
+        val responseResult = "${getString(R.string.response_result)} $msg"
+        binding.tvResponse.text = responseResult
     }
 }

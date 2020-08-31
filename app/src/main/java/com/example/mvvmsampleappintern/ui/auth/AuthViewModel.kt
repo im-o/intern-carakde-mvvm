@@ -2,6 +2,7 @@ package com.example.mvvmsampleappintern.ui.auth
 
 import android.view.View
 import androidx.lifecycle.ViewModel
+import com.example.mvvmsampleappintern.data.repository.UserRepository
 
 /**
  * Created by rivaldy on Aug/28/2020.
@@ -19,8 +20,8 @@ class AuthViewModel : ViewModel() {
             authListener?.onFailure("Email or password is empty")
             return
         }
-        if (email == "admin" && password == "admin") {
-            authListener?.onSuccess()
-        } else authListener?.onFailure("Invalid email or password")
+
+        val loginResponse = UserRepository().userLogin(email.toString(), password.toString())
+        authListener?.onSuccess(loginResponse)
     }
 }
