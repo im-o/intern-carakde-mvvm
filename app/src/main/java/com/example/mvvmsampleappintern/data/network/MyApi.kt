@@ -1,6 +1,6 @@
 package com.example.mvvmsampleappintern.data.network
 
-import okhttp3.ResponseBody
+import com.example.mvvmsampleappintern.data.model.UserToken
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -18,5 +18,5 @@ interface MyApi {
     fun userLogin(
         @Field("email") email : String,
         @Field("password") password : String
-    ): Call<ResponseBody>
+    ): Call<UserToken>
 }

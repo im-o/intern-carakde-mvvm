@@ -2,8 +2,8 @@ package com.example.mvvmsampleappintern.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mvvmsampleappintern.data.model.UserToken
 import com.example.mvvmsampleappintern.data.network.ApiClient
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,19 +14,19 @@ import retrofit2.Response
  */
 
 class UserRepository {
-    fun userLogin(email: String, password: String): LiveData<String>{
-        val loginResponse = MutableLiveData<String>()
+    fun userLogin(email: String, password: String): LiveData<UserToken>{
+        val loginResponse = MutableLiveData<UserToken>()
         ApiClient.iMyApi.userLogin(email, password)
-            .enqueue(object : Callback<ResponseBody>{
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    loginResponse.value = t.message
+            .enqueue(object : Callback<UserToken>{
+                override fun onFailure(call: Call<UserToken>, t: Throwable) {
+                    loginResponse.value = null
                 }
 
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                override fun onResponse(call: Call<UserToken>, response: Response<UserToken>) {
                     if (response.isSuccessful){
-                        loginResponse.value = response.body()?.string()
+                        loginResponse.value = response.body()
                     } else {
-                        loginResponse.value = response.errorBody()?.string()
+                        loginResponse.value = null
                     }
                 }
             })

@@ -1,6 +1,7 @@
 package com.example.mvvmsampleappintern.ui.auth
 
 import androidx.lifecycle.LiveData
+import com.example.mvvmsampleappintern.data.model.UserToken
 
 /**
  * Created by rivaldy on Aug/28/2020.
@@ -9,6 +10,6 @@ import androidx.lifecycle.LiveData
 
 interface AuthListener {
     fun onStarted()
-    fun onSuccess(loginResponse: LiveData<String>)
+    fun onSuccess(loginResponse: LiveData<UserToken>)
     fun onFailure(msg: String)
 }

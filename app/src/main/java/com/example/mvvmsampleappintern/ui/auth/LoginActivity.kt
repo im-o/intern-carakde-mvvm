@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleappintern.R
+import com.example.mvvmsampleappintern.data.model.UserToken
 import com.example.mvvmsampleappintern.databinding.ActivityLoginBinding
 import com.example.mvvmsampleappintern.utils.myToast
 
@@ -24,9 +25,10 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         myToast("Login Started")
     }
 
-    override fun onSuccess(loginResponse: LiveData<String>) {
+    override fun onSuccess(loginResponse: LiveData<UserToken>) {
         loginResponse.observe(this, Observer {
-            val responseResult = "${getString(R.string.response_result)} $it"
+            val resResponse = it.token
+            val responseResult = "${getString(R.string.response_result)} $resResponse"
             binding.tvResponse.text = responseResult
         })
     }
