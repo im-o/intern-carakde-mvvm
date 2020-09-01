@@ -3,8 +3,6 @@ package com.example.mvvmsampleappintern.ui.auth
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.data.model.UserToken
@@ -25,12 +23,10 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         myToast("Login Started")
     }
 
-    override fun onSuccess(loginResponse: LiveData<UserToken>) {
-        loginResponse.observe(this, Observer {
-            val resResponse = it.token
-            val responseResult = "${getString(R.string.response_result)} $resResponse"
-            binding.tvResponse.text = responseResult
-        })
+    override fun onSuccess(loginResponse: UserToken) {
+        val resResponse = loginResponse.token
+        val responseResult = "${getString(R.string.response_result)} $resResponse"
+        binding.tvResponse.text = responseResult
     }
 
     override fun onFailure(msg: String) {

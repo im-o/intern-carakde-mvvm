@@ -1,6 +1,5 @@
 package com.example.mvvmsampleappintern.ui.auth
 
-import androidx.lifecycle.LiveData
 import com.example.mvvmsampleappintern.data.model.UserToken
 
 /**
@@ -10,6 +9,6 @@ import com.example.mvvmsampleappintern.data.model.UserToken
 
 interface AuthListener {
     fun onStarted()
-    fun onSuccess(loginResponse: LiveData<UserToken>)
+    fun onSuccess(loginResponse: UserToken)
     fun onFailure(msg: String)
 }
