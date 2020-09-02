@@ -4,5 +4,10 @@
     <string name="password">Password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="response_result">Response result :</string>
+    <string name="register_result">Register result :</string>
     <string name="response_error">Response error :</string>
+    <string name="register_error">Register error :</string>
+    <string name="register">REGISTER</string>
+    <string name="login_now">Have an account? login now</string>
+    <string name="register_now">Don\'t have an account? register now</string>
 </resources>

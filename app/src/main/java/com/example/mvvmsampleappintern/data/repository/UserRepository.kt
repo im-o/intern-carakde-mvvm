@@ -20,4 +20,10 @@ class UserRepository(
             myApi.userLogin(email, password)
         }
     }
+
+    suspend fun userRegister(email: String, password: String): UserToken {
+        return apiRequest {
+            myApi.userRegister(email, password)
+        }
+    }
 }

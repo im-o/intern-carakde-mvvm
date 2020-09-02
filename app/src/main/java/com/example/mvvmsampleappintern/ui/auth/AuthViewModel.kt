@@ -1,5 +1,6 @@
 package com.example.mvvmsampleappintern.ui.auth
 
+import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.mvvmsampleappintern.data.repository.UserRepository
@@ -19,6 +20,18 @@ class AuthViewModel(
     var password: String? = null
     var authListener: AuthListener? = null
 
+    fun goLogin(view: View){
+        Intent(view.context, LoginActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
+
+    fun goSignUp(view: View){
+        Intent(view.context, SignupActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
+
     fun onLoginButtonClick(view: View) {
         authListener?.onStarted()
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
@@ -29,6 +42,34 @@ class AuthViewModel(
         Coroutines.main {
             try {
                 val authResponse = repository.userLogin(email.toString(), password.toString())
+                authResponse.let {
+                    authListener?.onSuccess(it)
+                    return@main
+                }
+            }catch (err: ApiException){
+                authListener?.onFailure(err.message.toString())
+            }catch (err: NoInternetException){
+                authListener?.onFailure(err.message.toString())
+            }
+
+        }
+    }
+
+    fun onRegisterButtonClick(view: View) {
+        authListener?.onStarted()
+        if (email.isNullOrEmpty()) {
+            authListener?.onFailure("Email is can't be empty")
+            return
+        }
+
+        if (password.isNullOrEmpty()) {
+            authListener?.onFailure("Password is can't be empty")
+            return
+        }
+
+        Coroutines.main {
+            try {
+                val authResponse = repository.userRegister(email.toString(), password.toString())
                 authResponse.let {
                     authListener?.onSuccess(it)
                     return@main

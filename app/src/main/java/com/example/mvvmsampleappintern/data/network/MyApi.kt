@@ -20,11 +20,19 @@ import retrofit2.http.POST
 interface MyApi {
     @FormUrlEncoded
     @POST("login")
-
     suspend fun userLogin(
         @Field("email") email: String,
         @Field("password") password: String
     ): Response<UserToken>
+
+
+    @FormUrlEncoded
+    @POST("register")
+    suspend fun userRegister(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Response<UserToken>
+
 
     companion object {
         operator fun invoke(

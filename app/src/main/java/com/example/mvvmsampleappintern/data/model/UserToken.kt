@@ -6,5 +6,6 @@ package com.example.mvvmsampleappintern.data.model
  */
 
 data class UserToken (
+    val id: Int? = null,
     val token: String? = null
 )
