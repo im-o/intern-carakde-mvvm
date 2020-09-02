@@ -13,7 +13,7 @@ import com.example.mvvmsampleappintern.data.db.entities.User
 
 @Database(
     entities = [User::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
