@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     }
 
     override fun onFailure(msg: String) {
-        val responseResult = "${getString(R.string.response_result)} $msg"
+        val responseResult = "${getString(R.string.response_error)} $msg"
         binding.tvResponse.text = responseResult
     }
 }

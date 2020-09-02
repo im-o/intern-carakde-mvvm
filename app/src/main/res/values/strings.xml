@@ -4,4 +4,5 @@
     <string name="password">Password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="response_result">Response result :</string>
+    <string name="response_error">Response error :</string>
 </resources>
