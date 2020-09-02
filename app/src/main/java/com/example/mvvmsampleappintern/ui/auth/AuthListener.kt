@@ -1,6 +1,6 @@
 package com.example.mvvmsampleappintern.ui.auth
 
-import com.example.mvvmsampleappintern.data.model.UserToken
+import com.example.mvvmsampleappintern.data.db.entities.User
 
 /**
  * Created by rivaldy on Aug/28/2020.
@@ -9,6 +9,6 @@ import com.example.mvvmsampleappintern.data.model.UserToken
 
 interface AuthListener {
     fun onStarted()
-    fun onSuccess(loginResponse: UserToken)
+    fun onSuccess(user: User)
     fun onFailure(msg: String)
 }

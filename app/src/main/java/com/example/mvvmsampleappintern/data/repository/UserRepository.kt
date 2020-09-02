@@ -1,7 +1,10 @@
 package com.example.mvvmsampleappintern.data.repository
 
+import com.example.mvvmsampleappintern.data.db.AppDatabase
+import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.data.model.UserToken
 import com.example.mvvmsampleappintern.data.network.ApiClient
+import com.example.mvvmsampleappintern.data.network.MyApi
 import com.example.mvvmsampleappintern.data.network.SafeApiRequest
 import retrofit2.Response
 
@@ -10,10 +13,18 @@ import retrofit2.Response
  * Find me on my lol Github :D -> https://github.com/im-o
  */
 
-class UserRepository: SafeApiRequest() {
-    suspend fun userLogin(email: String, password: String): UserToken{
+class UserRepository(
+    private val myApi: MyApi,
+    private val db: AppDatabase
+): SafeApiRequest() {
+
+    suspend fun userLogin(email: String, password: String): User{
         return apiRequest {
             ApiClient.iMyApi.userLogin(email, password)
         }
     }
+
+    suspend fun saveUser(user: User) = db.getUserDao().updateInsert(user)
+
+    fun getUser() = db.getUserDao().getUser()
 }

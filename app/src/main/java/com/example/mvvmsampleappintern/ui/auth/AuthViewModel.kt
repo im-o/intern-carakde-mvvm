@@ -11,10 +11,15 @@ import com.example.mvvmsampleappintern.utils.Coroutines
  * Find me on my lol Github :D -> https://github.com/im-o
  */
 
-class AuthViewModel : ViewModel() {
+class AuthViewModel(
+    private val repository: UserRepository
+) : ViewModel() {
+
     var email: String? = null
     var password: String? = null
     var authListener: AuthListener? = null
+
+    fun getLoggedInUser() = repository.getUser()
 
     fun onLoginButtonClick(view: View) {
         authListener?.onStarted()
@@ -25,9 +30,10 @@ class AuthViewModel : ViewModel() {
 
         Coroutines.main {
             try {
-                val authResponse = UserRepository().userLogin(email.toString(), password.toString())
+                val authResponse = repository.userLogin(email.toString(), password.toString())
                 authResponse.let {
                     authListener?.onSuccess(it)
+                    repository.saveUser(it)
                     return@main
                 }
             }catch (err: ApiException){
