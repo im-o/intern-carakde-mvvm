@@ -2,6 +2,7 @@ package com.example.mvvmsampleappintern.data.repository
 
 import com.example.mvvmsampleappintern.data.model.UserToken
 import com.example.mvvmsampleappintern.data.network.ApiClient
+import com.example.mvvmsampleappintern.data.network.MyApi
 import com.example.mvvmsampleappintern.data.network.SafeApiRequest
 import retrofit2.Response
 
@@ -10,10 +11,13 @@ import retrofit2.Response
  * Find me on my lol Github :D -> https://github.com/im-o
  */
 
-class UserRepository: SafeApiRequest() {
+class UserRepository(
+    private val myApi: MyApi
+): SafeApiRequest() {
+
     suspend fun userLogin(email: String, password: String): UserToken{
         return apiRequest {
-            ApiClient.iMyApi.userLogin(email, password)
+            myApi.userLogin(email, password)
         }
     }
 }
