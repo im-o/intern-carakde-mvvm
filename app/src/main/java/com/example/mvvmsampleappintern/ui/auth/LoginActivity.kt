@@ -4,10 +4,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.data.model.UserToken
 import com.example.mvvmsampleappintern.databinding.ActivityLoginBinding
+import com.example.mvvmsampleappintern.utils.ApiException
+import com.example.mvvmsampleappintern.utils.NoInternetException
 import com.example.mvvmsampleappintern.utils.myToast
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -18,12 +22,36 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
     private val factory: AuthViewModelFactory by instance()
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var viewModel: AuthViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        val viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
-        binding.viewmodel = viewModel
-        viewModel.authListener = this
+        viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
+
+        binding.btnSignIn.setOnClickListener {
+            loginUser()
+        }
+    }
+
+    private fun loginUser() {
+        val email = binding.edtEmail.text.toString().trim()
+        val password = binding.edtPassword.text.toString().trim()
+
+        lifecycleScope.launch {
+            try {
+                val authResponse = viewModel.userLogin(email, password)
+                authResponse.let {
+                    myToast("Response : ${it.token}")
+                    return@launch
+                }
+            }catch (err: ApiException){
+                err.printStackTrace()
+            }catch (err: NoInternetException){
+                err.printStackTrace()
+            }
+        }
     }
 
     override fun onStarted() {

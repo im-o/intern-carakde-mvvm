@@ -18,12 +18,11 @@ class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
     private val factory: AuthViewModelFactory by instance()
 
     private lateinit var binding: ActivitySignupBinding
+    private lateinit var viewModel: AuthViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
-        val viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
-        binding.viewmodel = viewModel
-        viewModel.authListener = this
+        viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
     }
 
     override fun onStarted() {
