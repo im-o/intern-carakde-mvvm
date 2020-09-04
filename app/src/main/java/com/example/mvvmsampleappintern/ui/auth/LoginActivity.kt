@@ -3,15 +3,15 @@ package com.example.mvvmsampleappintern.ui.auth
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.mvvmsampleappintern.R
-import com.example.mvvmsampleappintern.data.model.UserToken
+import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.databinding.ActivityLoginBinding
 import com.example.mvvmsampleappintern.utils.ApiException
+import com.example.mvvmsampleappintern.utils.Coroutines
 import com.example.mvvmsampleappintern.utils.NoInternetException
 import com.example.mvvmsampleappintern.utils.myToast
-import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -30,6 +30,12 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
+        viewModel.getLoggedInUser().observe(this, Observer { user ->
+            if (user != null){
+                myToast("There is user exist : ${user.token}")
+            }
+        })
+
         binding.btnSignIn.setOnClickListener {
             loginUser()
         }
@@ -39,16 +45,19 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         val email = binding.edtEmail.text.toString().trim()
         val password = binding.edtPassword.text.toString().trim()
 
-        lifecycleScope.launch {
+        Coroutines.main {
             try {
                 val authResponse = viewModel.userLogin(email, password)
                 authResponse.let {
-                    myToast("Response : ${it.token}")
-                    return@launch
+                    viewModel.saveLoggedInUser(it)
+                    onSuccess(it)
+                    return@main
                 }
             }catch (err: ApiException){
+                onFailure(err.message.toString())
                 err.printStackTrace()
             }catch (err: NoInternetException){
+                onFailure(err.message.toString())
                 err.printStackTrace()
             }
         }
@@ -58,8 +67,8 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         myToast("Login Started")
     }
 
-    override fun onSuccess(loginResponse: UserToken) {
-        val resResponse = loginResponse.token
+    override fun onSuccess(user: User) {
+        val resResponse = user.token
         val responseResult = "${getString(R.string.response_result)} $resResponse"
         binding.tvResponse.text = responseResult
     }

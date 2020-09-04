@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleappintern.R
-import com.example.mvvmsampleappintern.data.model.UserToken
+import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.databinding.ActivitySignupBinding
 import com.example.mvvmsampleappintern.utils.myToast
 import org.kodein.di.KodeinAware
@@ -29,9 +29,9 @@ class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
         myToast("SignUp Started")
     }
 
-    override fun onSuccess(loginResponse: UserToken) {
-        val resResponse = loginResponse.token
-        val idUser = loginResponse.id
+    override fun onSuccess(user: User) {
+        val resResponse = user.token
+        val idUser = user.id
         val responseResult = "${getString(R.string.register_result)} ID : $idUser Token : $resResponse"
         binding.tvResponse.text = responseResult
     }

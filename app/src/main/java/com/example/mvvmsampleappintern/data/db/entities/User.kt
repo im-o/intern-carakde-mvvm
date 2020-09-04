@@ -12,8 +12,8 @@ const val CURRENT_USER_ID = 0
 
 @Entity
 data class User(
-    val token: String? = null
-) {
     @PrimaryKey(autoGenerate = false)
-    val uid: Int = CURRENT_USER_ID
-}
+    val uid: Int = CURRENT_USER_ID,
+    val id: Int? = null,
+    val token: String? = null
+)

@@ -1,5 +1,6 @@
 package com.example.mvvmsampleappintern.data.network
 
+import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.data.model.UserToken
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -23,7 +24,7 @@ interface MyApi {
     suspend fun userLogin(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Response<UserToken>
+    ): Response<User>
 
 
     @FormUrlEncoded
@@ -31,7 +32,7 @@ interface MyApi {
     suspend fun userRegister(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Response<UserToken>
+    ): Response<User>
 
 
     companion object {
