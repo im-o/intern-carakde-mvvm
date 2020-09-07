@@ -8,10 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.databinding.ActivityLoginBinding
-import com.example.mvvmsampleappintern.utils.ApiException
-import com.example.mvvmsampleappintern.utils.Coroutines
-import com.example.mvvmsampleappintern.utils.NoInternetException
-import com.example.mvvmsampleappintern.utils.myToast
+import com.example.mvvmsampleappintern.ui.userlist.UserListActivity
+import com.example.mvvmsampleappintern.utils.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -31,14 +29,11 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
         viewModel.getLoggedInUser().observe(this, Observer { user ->
-            if (user != null){
-                myToast("There is user exist : ${user.token}")
-            }
+            if (user != null) myToast("There is user exist : ${user.token}")
         })
 
-        binding.btnSignIn.setOnClickListener {
-            loginUser()
-        }
+        binding.btnSignIn.setOnClickListener { loginUser() }
+        binding.tvSeeUser.setOnClickListener { openActivity(UserListActivity::class.java) }
     }
 
     private fun loginUser() {

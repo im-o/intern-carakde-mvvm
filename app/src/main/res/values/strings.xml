@@ -10,4 +10,5 @@
     <string name="register">REGISTER</string>
     <string name="login_now">Have an account? login now</string>
     <string name="register_now">Don\'t have an account? register now</string>
+    <string name="see_list_user">See List User</string>
 </resources>

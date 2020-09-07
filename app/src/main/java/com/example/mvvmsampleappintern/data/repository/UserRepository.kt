@@ -2,10 +2,12 @@ package com.example.mvvmsampleappintern.data.repository
 
 import com.example.mvvmsampleappintern.data.db.AppDatabase
 import com.example.mvvmsampleappintern.data.db.entities.User
+import com.example.mvvmsampleappintern.data.model.UserList
 import com.example.mvvmsampleappintern.data.model.UserToken
 import com.example.mvvmsampleappintern.data.network.ApiClient
 import com.example.mvvmsampleappintern.data.network.MyApi
 import com.example.mvvmsampleappintern.data.network.SafeApiRequest
+import com.example.mvvmsampleappintern.data.network.responses.UserListResponse
 import retrofit2.Response
 
 /**
@@ -27,6 +29,12 @@ class UserRepository(
     suspend fun userRegister(email: String, password: String): User {
         return apiRequest {
             myApi.userRegister(email, password)
+        }
+    }
+
+    suspend fun getAllUser(pageNumber: String): UserListResponse{
+        return apiRequest {
+            myApi.getListUser(pageNumber)
         }
     }
 
