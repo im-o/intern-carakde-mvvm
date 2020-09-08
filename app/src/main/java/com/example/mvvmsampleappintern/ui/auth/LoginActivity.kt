@@ -29,16 +29,17 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
         viewModel.getLoggedInUser().observe(this, Observer { user ->
-            if (user != null) myToast("There is user exist : ${user.token}")
+            if (user != null) myToast("${getString(R.string.no_exist_user)} ${user.token}")
         })
 
-        binding.btnSignIn.setOnClickListener { loginUser() }
-        binding.tvSeeUser.setOnClickListener { openActivity(UserListActivity::class.java) }
+        binding.signInMB.setOnClickListener { loginUser() }
+        binding.seeUserTV.setOnClickListener { openActivity(UserListActivity::class.java) }
     }
 
     private fun loginUser() {
-        val email = binding.edtEmail.text.toString().trim()
-        val password = binding.edtPassword.text.toString().trim()
+        onStarted()
+        val email = binding.userEmailET.text.toString().trim()
+        val password = binding.userPassET.text.toString().trim()
 
         Coroutines.main {
             try {
@@ -59,17 +60,19 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
     }
 
     override fun onStarted() {
-        myToast("Login Started")
+        binding.signInLoadPB.visible()
     }
 
     override fun onSuccess(user: User) {
+        binding.signInLoadPB.gone()
         val resResponse = user.token
         val responseResult = "${getString(R.string.response_result)} $resResponse"
-        binding.tvResponse.text = responseResult
+        binding.responseTV.text = responseResult
     }
 
     override fun onFailure(msg: String) {
+        binding.signInLoadPB.gone()
         val responseResult = "${getString(R.string.response_error)} $msg"
-        binding.tvResponse.text = responseResult
+        binding.responseTV.text = responseResult
     }
 }

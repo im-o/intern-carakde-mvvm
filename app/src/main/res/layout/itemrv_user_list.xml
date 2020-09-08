@@ -8,7 +8,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_user_id"
+            android:id="@+id/userIdTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
             tools:text="id : 1" />
 
         <TextView
-            android:id="@+id/tv_user_email"
+            android:id="@+id/userEmailTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -33,11 +33,11 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_id"
+            app:layout_constraintTop_toBottomOf="@+id/userIdTV"
             tools:text="Email : rivaldy@stimednp.ac.id" />
 
         <TextView
-            android:id="@+id/tv_first_name"
+            android:id="@+id/firstNameTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -47,11 +47,11 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_email"
+            app:layout_constraintTop_toBottomOf="@+id/userEmailTV"
             tools:text="First name : rival" />
 
         <TextView
-            android:id="@+id/tv_last_name"
+            android:id="@+id/lastNameTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -61,7 +61,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_first_name"
+            app:layout_constraintTop_toBottomOf="@+id/firstNameTV"
             tools:text="Last name : rivaldy o" />
 
         <View
@@ -70,7 +70,7 @@
             android:layout_marginTop="8dp"
             android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_last_name"
+            app:layout_constraintTop_toBottomOf="@+id/lastNameTV"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

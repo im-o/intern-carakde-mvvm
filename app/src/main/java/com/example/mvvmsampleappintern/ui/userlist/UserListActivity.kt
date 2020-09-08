@@ -2,12 +2,11 @@ package com.example.mvvmsampleappintern.ui.userlist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmsampleappintern.R
-import com.example.mvvmsampleappintern.data.model.UserList
+import com.example.mvvmsampleappintern.data.model.Data
 import com.example.mvvmsampleappintern.databinding.ActivityUserListBinding
 import com.example.mvvmsampleappintern.ui.auth.AuthViewModelFactory
 import com.example.mvvmsampleappintern.utils.*
@@ -31,22 +30,22 @@ class UserListActivity : AppCompatActivity(), KodeinAware {
 
     private fun initViewModel() {
         val samplePage = "1"
-        binding.progressUser.visible()
+        binding.userLoadPB.visible()
         Coroutines.main {
             val userResponse = viewModel.getAllUser(samplePage)
-            userResponse.data.let {
-                binding.progressUser.gone()
+            userResponse.user.let {
+                binding.userLoadPB.gone()
                 setupAdapter(it)
             }
         }
     }
 
-    private fun setupAdapter(userList: MutableList<UserList>?) {
-        userList ?: return
-        val userAdapter = AdapterUserList(userList){
-            myToast("INI USER -> : ${it.first_name}")
+    private fun setupAdapter(userData: MutableList<Data>?) {
+        userData ?: return
+        val userAdapter = AdapterUserList(userData){
+            myToast("${getString(R.string.am_user)} ${it.first_name}")
         }
-        binding.rvUserList.apply {
+        binding.userListRV.apply {
             layoutManager = LinearLayoutManager(this@UserListActivity)
             setHasFixedSize(true)
             adapter = userAdapter

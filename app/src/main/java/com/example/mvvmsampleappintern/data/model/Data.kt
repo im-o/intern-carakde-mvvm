@@ -5,7 +5,7 @@ package com.example.mvvmsampleappintern.data.model
  * Find me on my lol Github :D -> https://github.com/im-o
  */
 
-data class UserList(
+data class Data(
     val avatar: String? = null,
     val email: String? = null,
     val first_name: String? = null,

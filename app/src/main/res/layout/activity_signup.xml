@@ -6,7 +6,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_email"
+            android:id="@+id/userEmailTIL"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_email"
+                android:id="@+id/userEmailET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -28,7 +28,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_password"
+            android:id="@+id/userPassTIL"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,11 +39,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ti_email"
+            app:layout_constraintTop_toBottomOf="@+id/userEmailTIL"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_password"
+                android:id="@+id/userPassET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -51,20 +51,20 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_register"
+            android:id="@+id/registerMB"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             android:text="@string/register"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/ti_email"
-            app:layout_constraintStart_toStartOf="@+id/ti_email"
-            app:layout_constraintTop_toBottomOf="@+id/ti_password"
+            app:layout_constraintEnd_toEndOf="@+id/userEmailTIL"
+            app:layout_constraintStart_toStartOf="@+id/userEmailTIL"
+            app:layout_constraintTop_toBottomOf="@+id/userPassTIL"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/tv_response"
+            android:id="@+id/responseTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -74,11 +74,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register"
+            app:layout_constraintTop_toBottomOf="@+id/registerMB"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/tv_go_login"
+            android:id="@+id/goSignInTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -86,12 +86,12 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:padding="8dp"
-            android:text="@string/login_now"
+            android:text="@string/sign_in_now"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register"
+            app:layout_constraintTop_toBottomOf="@+id/registerMB"
             app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
