@@ -33,11 +33,11 @@ class SignupActivity : AppCompatActivity(), AuthListener, KodeinAware {
         val resResponse = user.token
         val idUser = user.id
         val responseResult = "${getString(R.string.register_result)} ID : $idUser Token : $resResponse"
-        binding.tvResponse.text = responseResult
+        binding.responseTV.text = responseResult
     }
 
     override fun onFailure(msg: String) {
         val responseResult = "${getString(R.string.register_error)} $msg"
-        binding.tvResponse.text = responseResult
+        binding.responseTV.text = responseResult
     }
 }

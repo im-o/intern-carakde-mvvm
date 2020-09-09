@@ -8,10 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.databinding.ActivityLoginBinding
-import com.example.mvvmsampleappintern.utils.ApiException
-import com.example.mvvmsampleappintern.utils.Coroutines
-import com.example.mvvmsampleappintern.utils.NoInternetException
-import com.example.mvvmsampleappintern.utils.myToast
+import com.example.mvvmsampleappintern.ui.userlist.UserListActivity
+import com.example.mvvmsampleappintern.utils.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -31,19 +29,17 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
         viewModel.getLoggedInUser().observe(this, Observer { user ->
-            if (user != null){
-                myToast("There is user exist : ${user.token}")
-            }
+            if (user != null) myToast("${getString(R.string.no_exist_user)} ${user.token}")
         })
 
-        binding.btnSignIn.setOnClickListener {
-            loginUser()
-        }
+        binding.signInMB.setOnClickListener { loginUser() }
+        binding.seeUserTV.setOnClickListener { openActivity(UserListActivity::class.java) }
     }
 
     private fun loginUser() {
-        val email = binding.edtEmail.text.toString().trim()
-        val password = binding.edtPassword.text.toString().trim()
+        onStarted()
+        val email = binding.userEmailET.text.toString().trim()
+        val password = binding.userPassET.text.toString().trim()
 
         Coroutines.main {
             try {
@@ -64,17 +60,19 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
     }
 
     override fun onStarted() {
-        myToast("Login Started")
+        binding.signInLoadPB.visible()
     }
 
     override fun onSuccess(user: User) {
+        binding.signInLoadPB.gone()
         val resResponse = user.token
         val responseResult = "${getString(R.string.response_result)} $resResponse"
-        binding.tvResponse.text = responseResult
+        binding.responseTV.text = responseResult
     }
 
     override fun onFailure(msg: String) {
+        binding.signInLoadPB.gone()
         val responseResult = "${getString(R.string.response_error)} $msg"
-        binding.tvResponse.text = responseResult
+        binding.responseTV.text = responseResult
     }
 }

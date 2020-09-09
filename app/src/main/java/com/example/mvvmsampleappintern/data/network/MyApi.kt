@@ -2,6 +2,7 @@ package com.example.mvvmsampleappintern.data.network
 
 import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.data.model.UserToken
+import com.example.mvvmsampleappintern.data.network.responses.UserListResponse
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -9,9 +10,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * Created by rivaldy on Aug/31/2020.
@@ -34,6 +33,10 @@ interface MyApi {
         @Field("password") password: String
     ): Response<User>
 
+    @GET("users")
+    suspend fun getListUser(
+        @Query("page") pageNumber: String?
+    ): Response<UserListResponse>
 
     companion object {
         operator fun invoke(

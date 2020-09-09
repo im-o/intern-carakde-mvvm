@@ -9,7 +9,7 @@
         tools:context=".ui.auth.LoginActivity">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_email"
+            android:id="@+id/userEmailTIL"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -23,16 +23,16 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:text="eve.holt@reqres.in"
-                android:id="@+id/edt_email"
+                android:id="@+id/userEmailET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:text="@string/sample_email"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_password"
+            android:id="@+id/userPassTIL"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,60 +43,88 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ti_email"
+            app:layout_constraintTop_toBottomOf="@+id/userEmailTIL"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:text="cityslicka"
-                android:id="@+id/edt_password"
+                android:id="@+id/userPassET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:text="@string/sample_pass"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/signInMB"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             android:text="@string/sign_in"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/ti_email"
-            app:layout_constraintStart_toStartOf="@+id/ti_email"
-            app:layout_constraintTop_toBottomOf="@+id/ti_password"
+            app:layout_constraintEnd_toEndOf="@+id/userEmailTIL"
+            app:layout_constraintStart_toStartOf="@+id/userEmailTIL"
+            app:layout_constraintTop_toBottomOf="@+id/userPassTIL"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:text="@string/response_result"
-            android:id="@+id/tv_response"
+            android:id="@+id/responseTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
+            android:text="@string/response_result"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_in"
+            app:layout_constraintTop_toBottomOf="@+id/signInMB"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/tv_go_register"
+            android:id="@+id/seeUserTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:drawableEnd="@drawable/ic_navigate_next_black_24dp"
+            android:text="@string/see_list_user"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/responseTV"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/goSignUpTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:padding="8dp"
-            android:text="@string/register_now"
+            android:text="@string/sign_up_now"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_response"
+            app:layout_constraintTop_toBottomOf="@+id/responseTV"
             app:layout_constraintVertical_bias="1.0" />
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/signInLoadPB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/goSignUpTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seeUserTV" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

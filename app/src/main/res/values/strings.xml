@@ -8,6 +8,13 @@
     <string name="response_error">Response error :</string>
     <string name="register_error">Register error :</string>
     <string name="register">REGISTER</string>
-    <string name="login_now">Have an account? login now</string>
-    <string name="register_now">Don\'t have an account? register now</string>
+    <string name="sign_in_now">Have an account? signIn now</string>
+    <string name="sign_up_now">Don\'t have an account? signUp now</string>
+    <string name="see_list_user">See User List</string>
+    <string name="no_exist_user">There is user exist :</string>
+    <string name="login_start">Login Started</string>
+    <string name="sample_pass">cityslicka</string>
+    <string name="sample_email">eve.holt@reqres.in</string>
+    <string name="am_user">I am user :</string>
+    <string name="logged_by_db">Logged by save user db local</string>
 </resources>
