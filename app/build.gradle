@@ -93,4 +93,6 @@ dependencies {
 
     implementation "androidx.preference:preference-ktx:1.1.1"
 
+    //MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
