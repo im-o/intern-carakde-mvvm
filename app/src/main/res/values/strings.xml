@@ -18,8 +18,15 @@
     <string name="am_user">I am user :</string>
     <string name="logged_by_db">Logged by save user db local</string>
     <string name="see_bar_chart">See Bar Chart</string>
+    <string name="see_broadcast">See Main Broadcast</string>
     <string name="str_cells">Cells</string>
     <string name="str_case">Case</string>
     <string name="str_dead">Dead</string>
     <string name="str_recover">Recovered</string>
+    <string name="sample_receiver">Sample App SMS Receiver</string>
+    <string name="check_sms_permission">Check SMS Permission</string>
+    <string name="incoming_message">Pesan masuk</string>
+    <string name="str_from">From : %1$s</string>
+    <string name="sms_permission_granted">Sms receiver permission granted</string>
+    <string name="sms_permission_denied">Sms receiver permission denied</string>
 </resources>
