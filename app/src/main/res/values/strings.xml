@@ -17,4 +17,9 @@
     <string name="sample_email">eve.holt@reqres.in</string>
     <string name="am_user">I am user :</string>
     <string name="logged_by_db">Logged by save user db local</string>
+    <string name="see_bar_chart">See Bar Chart</string>
+    <string name="str_cells">Cells</string>
+    <string name="str_case">Case</string>
+    <string name="str_dead">Dead</string>
+    <string name="str_recover">Recovered</string>
 </resources>
