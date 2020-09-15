@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.data.db.entities.User
 import com.example.mvvmsampleappintern.databinding.ActivityLoginBinding
+import com.example.mvvmsampleappintern.ui.broadcast.BroadcastMainActivity
 import com.example.mvvmsampleappintern.ui.chart.SampleChartActivity
 import com.example.mvvmsampleappintern.ui.userlist.UserListActivity
 import com.example.mvvmsampleappintern.utils.*
@@ -36,6 +37,7 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         binding.signInMB.setOnClickListener { loginUser() }
         binding.seeUserTV.setOnClickListener { openActivity(UserListActivity::class.java) }
         binding.seeChartTV.setOnClickListener { openActivity(SampleChartActivity::class.java) }
+        binding.seeBroadcastTV.setOnClickListener { openActivity(BroadcastMainActivity::class.java) }
     }
 
     private fun loginUser() {
