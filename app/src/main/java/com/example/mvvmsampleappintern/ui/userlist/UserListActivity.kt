@@ -1,7 +1,7 @@
 package com.example.mvvmsampleappintern.ui.userlist
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,7 +9,9 @@ import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.data.model.Data
 import com.example.mvvmsampleappintern.databinding.ActivityUserListBinding
 import com.example.mvvmsampleappintern.ui.auth.AuthViewModelFactory
-import com.example.mvvmsampleappintern.utils.*
+import com.example.mvvmsampleappintern.utils.Coroutines
+import com.example.mvvmsampleappintern.utils.gone
+import com.example.mvvmsampleappintern.utils.myToast
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -30,11 +32,10 @@ class UserListActivity : AppCompatActivity(), KodeinAware {
 
     private fun initViewModel() {
         val samplePage = "1"
-        binding.userLoadPB.visible()
         Coroutines.main {
             val userResponse = viewModel.getAllUser(samplePage)
             userResponse.user.let {
-                binding.userLoadPB.gone()
+                hideShimmer()
                 setupAdapter(it)
             }
         }
@@ -50,5 +51,21 @@ class UserListActivity : AppCompatActivity(), KodeinAware {
             setHasFixedSize(true)
             adapter = userAdapter
         }
+    }
+    private fun hideShimmer() {
+        binding.shimmerLoadingSFL.apply {
+            stopShimmer()
+            gone()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerLoadingSFL.startShimmer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.shimmerLoadingSFL.stopShimmer()
     }
 }
