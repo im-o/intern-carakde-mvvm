@@ -35,9 +35,6 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         })
 
         binding.signInMB.setOnClickListener { loginUser() }
-        binding.seeUserTV.setOnClickListener { openActivity(UserListActivity::class.java) }
-        binding.seeChartTV.setOnClickListener { openActivity(SampleChartActivity::class.java) }
-        binding.seeBroadcastTV.setOnClickListener { openActivity(BroadcastMainActivity::class.java) }
     }
 
     private fun loginUser() {

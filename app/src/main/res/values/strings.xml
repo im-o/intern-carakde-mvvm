@@ -29,4 +29,5 @@
     <string name="str_from">From : %1$s</string>
     <string name="sms_permission_granted">Sms receiver permission granted</string>
     <string name="sms_permission_denied">Sms receiver permission denied</string>
+    <string name="see_shimmer_chart">See Shimmer Chart</string>
 </resources>

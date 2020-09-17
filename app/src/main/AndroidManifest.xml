@@ -16,11 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.auth.LoginActivity"/>
+        <activity android:name=".ui.sample.ShimmerChartActivity" />
 
         <receiver
             android:name=".ui.broadcast.SmsReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
@@ -34,7 +37,7 @@
         <activity android:name=".ui.userlist.UserListActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.auth.SignupActivity" />
-        <activity android:name=".ui.auth.LoginActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
