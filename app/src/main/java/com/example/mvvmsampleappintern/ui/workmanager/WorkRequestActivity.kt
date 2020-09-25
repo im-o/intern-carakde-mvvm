@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.work.Constraints
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
@@ -29,8 +30,13 @@ class WorkRequestActivity : AppCompatActivity() {
             .putString(KEY_TASK_DESC, "Hey I am sending the work data from activity")
             .build()
 
+        val constraints = Constraints.Builder()
+            .setRequiresCharging(true)
+            .build()
+
         val oneTimeWorkRequest = OneTimeWorkRequest.Builder(MyWorker::class.java)
             .setInputData(data)
+            .setConstraints(constraints)
             .build()
 
         binding.workStartedMB.setOnClickListener {
@@ -43,7 +49,7 @@ class WorkRequestActivity : AppCompatActivity() {
                     if (it.state.isFinished) {
                         val data1 = it.outputData
                         val output = data1.getString(MyWorker.KEY_TASK_OUTPUT)
-                        binding.workerResultTV.append("out : $output \n")
+                        binding.workerResultTV.append("output : $output \n")
                     }
                 }
 
