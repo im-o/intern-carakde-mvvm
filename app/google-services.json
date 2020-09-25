@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "612240280333",
+    "firebase_url": "https://mvvm-sample-app-intern.firebaseio.com",
+    "project_id": "mvvm-sample-app-intern",
+    "storage_bucket": "mvvm-sample-app-intern.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612240280333:android:ff044cd224a80d081bbe44",
+        "android_client_info": {
+          "package_name": "com.example.mvvmsampleappintern"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612240280333-a6rcqa8aom03dcc8u2f9q5jkj0f0avf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuy7vq566Mr8mZ4MIg2522OgOX7h6VjBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612240280333-a6rcqa8aom03dcc8u2f9q5jkj0f0avf2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -87,5 +87,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seeShimmerChartTV" />
+
+        <TextView
+            android:id="@+id/seeFcmBroadcastTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:drawableEnd="@drawable/ic_navigate_next_black_24dp"
+            android:text="@string/see_broadcast_with_fcm"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seeWorkManagerTV" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

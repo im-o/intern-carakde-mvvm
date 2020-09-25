@@ -7,6 +7,7 @@ import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.databinding.ActivityMainBinding
 import com.example.mvvmsampleappintern.ui.broadcast.BroadcastMainActivity
 import com.example.mvvmsampleappintern.ui.chart.SampleChartActivity
+import com.example.mvvmsampleappintern.ui.fcm.FcmBroadcastActivity
 import com.example.mvvmsampleappintern.ui.sample.ShimmerChartActivity
 import com.example.mvvmsampleappintern.ui.userlist.UserListActivity
 import com.example.mvvmsampleappintern.ui.workmanager.WorkRequestActivity
@@ -27,5 +28,6 @@ class MainActivity : AppCompatActivity() {
         binding.seeBroadcastTV.setOnClickListener { openActivity(BroadcastMainActivity::class.java) }
         binding.seeShimmerChartTV.setOnClickListener { openActivity(ShimmerChartActivity::class.java) }
         binding.seeWorkManagerTV.setOnClickListener { openActivity(WorkRequestActivity::class.java) }
+        binding.seeFcmBroadcastTV.setOnClickListener { openActivity(FcmBroadcastActivity::class.java) }
     }
 }

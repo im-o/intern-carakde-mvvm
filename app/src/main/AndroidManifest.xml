@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.fcm.FcmBroadcastActivity" />
         <activity android:name=".ui.workmanager.WorkRequestActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
         <activity android:name=".ui.sample.ShimmerChartActivity" />
@@ -33,6 +34,7 @@
         <activity
             android:name=".ui.broadcast.SmsReceiverActivity"
             android:theme="@style/SmsReceiverTheme" />
+
         <activity android:name=".ui.broadcast.BroadcastMainActivity" />
         <activity android:name=".ui.chart.SampleChartActivity" />
         <activity android:name=".ui.userlist.UserListActivity" />
@@ -45,6 +47,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".service.AddService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
     </application>
 
 </manifest>

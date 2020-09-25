@@ -31,7 +31,7 @@ class WorkRequestActivity : AppCompatActivity() {
             .build()
 
         val constraints = Constraints.Builder()
-            .setRequiresCharging(true)
+            .setRequiresBatteryNotLow(true)
             .build()
 
         val oneTimeWorkRequest = OneTimeWorkRequest.Builder(MyWorker::class.java)
