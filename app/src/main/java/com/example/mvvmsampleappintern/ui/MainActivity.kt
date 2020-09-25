@@ -9,6 +9,7 @@ import com.example.mvvmsampleappintern.ui.broadcast.BroadcastMainActivity
 import com.example.mvvmsampleappintern.ui.chart.SampleChartActivity
 import com.example.mvvmsampleappintern.ui.sample.ShimmerChartActivity
 import com.example.mvvmsampleappintern.ui.userlist.UserListActivity
+import com.example.mvvmsampleappintern.ui.workmanager.WorkRequestActivity
 import com.example.mvvmsampleappintern.utils.openActivity
 
 class MainActivity : AppCompatActivity() {
@@ -25,5 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding.seeChartTV.setOnClickListener { openActivity(SampleChartActivity::class.java) }
         binding.seeBroadcastTV.setOnClickListener { openActivity(BroadcastMainActivity::class.java) }
         binding.seeShimmerChartTV.setOnClickListener { openActivity(ShimmerChartActivity::class.java) }
+        binding.seeWorkManagerTV.setOnClickListener { openActivity(WorkRequestActivity::class.java) }
     }
 }

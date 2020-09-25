@@ -30,4 +30,6 @@
     <string name="sms_permission_granted">Sms receiver permission granted</string>
     <string name="sms_permission_denied">Sms receiver permission denied</string>
     <string name="see_shimmer_chart">See Shimmer Chart</string>
+    <string name="start_work_request">START ONE TIME WORK REQUEST</string>
+    <string name="see_work_manager">See Work Manager</string>
 </resources>
