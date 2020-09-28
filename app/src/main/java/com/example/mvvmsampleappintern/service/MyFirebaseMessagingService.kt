@@ -23,11 +23,11 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        Log.e("INI MessageReceived","Some Message Received : $remoteMessage")
+        Log.e("INI MessageReceived","Some Message Received : ${remoteMessage.data}")
         when(remoteMessage.data["type"]){
             TYPE_ADD -> {
                 val addServiceIntent = Intent(this, AddService::class.java)
-                startService(addServiceIntent)
+                AddService.enqueueWork(applicationContext, addServiceIntent)
             }
         }
     }
