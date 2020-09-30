@@ -60,6 +60,10 @@
             android:name=".service.AddService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
+        <service
+            android:name=".service.ReduceService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
     </application>
 
 </manifest>

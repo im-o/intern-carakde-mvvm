@@ -14,6 +14,7 @@ import com.google.firebase.messaging.RemoteMessage
 class MyFirebaseMessagingService: FirebaseMessagingService() {
     companion object {
         const val TYPE_ADD = "add"
+        const val TYPE_REDUCE = "reduce"
     }
 
     override fun onNewToken(token: String) {
@@ -28,6 +29,10 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             TYPE_ADD -> {
                 val addServiceIntent = Intent(this, AddService::class.java)
                 AddService.enqueueWork(applicationContext, addServiceIntent)
+            }
+            TYPE_REDUCE -> {
+                val reduceServiceIntent = Intent(this, ReduceService::class.java)
+                ReduceService.enqueueWork(applicationContext, reduceServiceIntent)
             }
         }
     }
