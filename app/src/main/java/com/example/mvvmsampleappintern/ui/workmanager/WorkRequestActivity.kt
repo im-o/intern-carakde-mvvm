@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.work.Constraints
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.example.mvvmsampleappintern.R
 import com.example.mvvmsampleappintern.databinding.ActivityWorkRequestBinding
 import com.example.mvvmsampleappintern.workers.MyWorker
+import java.util.concurrent.TimeUnit
 
 class WorkRequestActivity : AppCompatActivity() {
     companion object {
@@ -34,16 +32,21 @@ class WorkRequestActivity : AppCompatActivity() {
             .setRequiresBatteryNotLow(true)
             .build()
 
+        val work = PeriodicWorkRequestBuilder<MyWorker>(15, TimeUnit.MINUTES)
+            .setInputData(data)
+            .setConstraints(constraints)
+            .build()
+
         val oneTimeWorkRequest = OneTimeWorkRequest.Builder(MyWorker::class.java)
             .setInputData(data)
             .setConstraints(constraints)
             .build()
 
         binding.workStartedMB.setOnClickListener {
-            WorkManager.getInstance(this).enqueue(oneTimeWorkRequest)
+            WorkManager.getInstance(this).enqueue(work)
         }
 
-        WorkManager.getInstance(this).getWorkInfoByIdLiveData(oneTimeWorkRequest.id)
+        WorkManager.getInstance(this).getWorkInfoByIdLiveData(work.id)
             .observe(this, Observer {
                 if (it != null) {
                     if (it.state.isFinished) {
