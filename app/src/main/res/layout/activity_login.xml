@@ -83,54 +83,6 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/seeUserTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:drawableEnd="@drawable/ic_navigate_next_black_24dp"
-            android:text="@string/see_list_user"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/responseTV" />
-
-        <TextView
-            android:id="@+id/seeChartTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:drawableEnd="@drawable/ic_navigate_next_black_24dp"
-            android:text="@string/see_bar_chart"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seeUserTV" />
-
-        <TextView
-            android:id="@+id/seeBroadcastTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:drawableEnd="@drawable/ic_navigate_next_black_24dp"
-            android:text="@string/see_bar_chart"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seeChartTV" />
-
-        <TextView
             android:id="@+id/goSignUpTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -147,14 +99,14 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ProgressBar
-            android:visibility="gone"
             android:id="@+id/signInLoadPB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/goSignUpTV"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seeUserTV" />
+            app:layout_constraintTop_toBottomOf="@+id/responseTV" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
